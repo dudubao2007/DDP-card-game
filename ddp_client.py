@@ -28,8 +28,14 @@ def CardAvailable(cards, card):
 def GetNumber(cards, str, apd = None):
     if (str == 'keyboard'):
         readstr = input('input card:')
-        while not (isint(readstr) and CardAvailable(cards, int(readstr))):
-            readstr = input('Error!input card:')
+        while (True):
+            if not isint(readstr):
+                readstr = input('The string is not an integer!Try again!')
+            elif not CardAvailable(cards, int(readstr)):
+                readstr = input('You do not have this card!Try again!')
+            else:
+                print('This card is ok!')
+                break
         return int(readstr)
     if (str == 'random'):
         return random.choice(cards)
