@@ -12,6 +12,13 @@ cardchoices = [0, 0]
 cardnum = 7
 ind = -1
 
+def isint(str):
+    try:
+       a = int(str)
+    except:
+        return False
+    return True
+
 def CardAvailable(cards, card):
     for i in cards:
         if (card == i):
@@ -21,7 +28,7 @@ def CardAvailable(cards, card):
 def GetNumber(cards, str, apd = None):
     if (str == 'keyboard'):
         readstr = input('input card:')
-        while not (readstr.isdigit() and CardAvailable(cards, int(readstr))):
+        while not (isint(readstr) and CardAvailable(cards, int(readstr))):
             readstr = input('Error!input card:')
         return int(readstr)
     if (str == 'random'):
